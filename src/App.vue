@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <AddTodo v-on:added="onTodoAdd($event)" />
+    <AddTodo v-on:added="addTodo($event)" />
     <Todos
       :todos="todos"
-      @deleted="onTodoDelete($event)"
-      @completed="onTodoComplete($event)"
+      @deleted="deleteTodo($event)"
+      @completed="completeTodo($event)"
     ></Todos>
   </div>
 </template>
@@ -12,6 +12,7 @@
 <script>
 import AddTodo from "./components/AddTodo.vue";
 import Todos from "./components/Todos.vue";
+import { mapActions, mapState } from "vuex";
 
 export default {
   name: "app",
@@ -19,35 +20,9 @@ export default {
     AddTodo,
     Todos
   },
-  data: function() {
-    return {
-      todos: [
-        {
-          text: "wervwergerw",
-          completed: true
-        },
-        {
-          text: "qwfwef",
-          completed: false
-        }
-      ]
-    };
-  },
+  computed: mapState(["todos"]),
   methods: {
-    onTodoDelete: function(value) {
-      this.todos = this.todos.filter(todo => todo.text !== value);
-    },
-    onTodoAdd: function(value) {
-      this.todos.unshift({
-        text: value,
-        completed: false
-      });
-    },
-    onTodoComplete: function(value) {
-      this.todos = this.todos.map(todo =>
-        todo.text === value ? { ...todo, completed: !todo.completed } : todo
-      );
-    }
+    ...mapActions(["deleteTodo", "addTodo", "completeTodo"])
   }
 };
 </script>
