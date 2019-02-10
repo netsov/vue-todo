@@ -5,8 +5,8 @@
       :key="todo.text"
       :text="todo.text"
       :completed="todo.completed"
-      v-on:deleted="onTodoDelete($event)"
-      v-on:completed="onTodoComplete($event)"
+      @deleted="onTodoDelete($event)"
+      @completed="onTodoComplete($event)"
     ></Todo>
   </div>
 </template>

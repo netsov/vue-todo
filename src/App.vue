@@ -3,8 +3,8 @@
     <AddTodo v-on:added="onTodoAdd($event)" />
     <Todos
       :todos="todos"
-      v-on:deleted="onTodoDelete($event)"
-      v-on:completed="onTodoComplete($event)"
+      @deleted="onTodoDelete($event)"
+      @completed="onTodoComplete($event)"
     ></Todos>
   </div>
 </template>
