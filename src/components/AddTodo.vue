@@ -1,28 +1,26 @@
 <template>
   <div>
-    <input type="text" v-model="text">
-    <input type="button" value="AddTodo" v-on:click="addTodo()" v-bind:disabled="!text">
-
+    <input type="text" v-model="text" />
+    <input type="button" value="AddTodo" @click="addTodo()" :disabled="!text" />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'AddTodo',
+  name: "AddTodo",
   data: function() {
     return {
-      text: ''
-    }
+      text: ""
+    };
   },
   methods: {
-    addTodo: function () {
+    addTodo: function() {
       if (!this.text) return;
-      this.$emit('added', this.text);
-      this.text = '';
+      this.$emit("added", this.text);
+      this.text = "";
     }
   }
-}
+};
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

@@ -1,14 +1,14 @@
 <template>
   <div>
-    <span v-bind:class="{ completed: completed }">{{ text }}</span>
-    <input type="checkbox" v-model="completed" v-on:click="complete()">
-    <button v-on:click="$emit('deleted', text)">x</button>
+    <span :class="{ completed: completed }">{{ text }}</span>
+    <input type="checkbox" v-model="completed" @click="complete()" />
+    <button @click="$emit('deleted', text)">x</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Todo',
+  name: "Todo",
   props: {
     text: String,
     completed: Boolean
@@ -16,7 +16,7 @@ export default {
   data: function() {
     return {
       // isCompleted: this.completed
-    }
+    };
   },
   computed: {
     // isCompleted: function() {
@@ -24,15 +24,15 @@ export default {
     // }
   },
   methods: {
-    complete: function () {
-      this.$emit('completed', this.text)
+    complete: function() {
+      this.$emit("completed", this.text);
     }
   }
-}
+};
 </script>
 
 <style scoped>
-  .completed {
-    text-decoration: line-through;
-  }
+.completed {
+  text-decoration: line-through;
+}
 </style>
